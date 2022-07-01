@@ -5,11 +5,14 @@ import Nav from 'react-bootstrap/Nav'
 import NavLink from 'react-bootstrap/NavLink'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-import { SHOP_ROUTE } from '../utils/consts'
+import { LOGIN_ROUTE, SHOP_ROUTE } from '../utils/consts'
 import { observer } from 'mobx-react-lite'
+import { useNavigate } from 'react-router-dom'
+import { ADMIN_ROUTE } from './../utils/consts'
 
 const NavBar = observer(() => {
     const { user } = useContext(Context)
+    const navigate = useNavigate()
     return (
         <Navbar bg='dark' variant='dark'>
             <Container>
@@ -18,9 +21,18 @@ const NavBar = observer(() => {
                 </NavLink>
                 {user.isAuth ? (
                     <Nav className='ms-auto' style={{ color: 'white' }}>
-                        <Button variant={'outline-light'}>Админ панель</Button>
-                        <Button variant={'outline-light'} className='ms-2'>
-                            Войти
+                        <Button
+                            onClick={() => navigate(ADMIN_ROUTE)}
+                            variant={'outline-light'}
+                        >
+                            Админ панель
+                        </Button>
+                        <Button
+                            onClick={() => navigate(LOGIN_ROUTE)}
+                            variant={'outline-light'}
+                            className='ms-2'
+                        >
+                            Выйти
                         </Button>
                     </Nav>
                 ) : (
