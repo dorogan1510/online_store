@@ -1,3 +1,5 @@
+const { modelManager } = require('../db')
+
 class ApiError extends Error {
     constructor(status, message) {
         super()
@@ -17,3 +19,5 @@ class ApiError extends Error {
         return new ApiError(403, message)
     }
 }
+
+module.exports = ApiError
