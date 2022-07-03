@@ -19,7 +19,7 @@ const DeviceItem = ({ device }) => {
                 <Image
                     width={150}
                     height={150}
-                    src={'http://localhost:5000' + device.img}
+                    src={'http://localhost:5000/' + device.img}
                 />
                 <div className='text-black-50 mt-1 d-flex justify-content-between'>
                     <div>Samsung...</div>

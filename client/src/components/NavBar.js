@@ -21,7 +21,10 @@ const NavBar = observer(() => {
     return (
         <Navbar bg='dark' variant='dark'>
             <Container>
-                <NavLink to={SHOP_ROUTE} style={{ color: 'white' }}>
+                <NavLink
+                    onClick={() => navigate(SHOP_ROUTE)}
+                    style={{ color: 'white' }}
+                >
                     Купи девайс
                 </NavLink>
                 {user.isAuth ? (
