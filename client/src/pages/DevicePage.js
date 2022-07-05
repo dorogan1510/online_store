@@ -13,7 +13,7 @@ const DevicePage = () => {
     }, [])
     return (
         <Container className={'mt-3'}>
-            <Row>
+            <Row className={'d-flex justify-content-around'}>
                 <Col md={4}>
                     <Image
                         width={300}
@@ -21,9 +21,8 @@ const DevicePage = () => {
                         src={'http://localhost:5000/' + device.img}
                     />
                 </Col>
-                <Col md={4}>
+                {/* <Col md={4}>
                     <Row className='d-flex flex-column align-items-center '>
-                        <h2>{device.name}</h2>
                         <div
                             className='d-flex align-items-center  justify-content-center'
                             style={{
@@ -37,7 +36,7 @@ const DevicePage = () => {
                             {device.rating}
                         </div>
                     </Row>
-                </Col>
+                </Col> */}
                 <Col md={4}>
                     <Card
                         className='d-flex flex-column align-items-center justify-content-around'
@@ -48,7 +47,9 @@ const DevicePage = () => {
                             border: '5px solid lightgray',
                         }}
                     >
-                        <h3>От: {device.price} руб.</h3>
+                        <h3 className='text-center'>{device.name}</h3>
+
+                        <h4>{device.price} руб.</h4>
                         <Button variant={'outline-dark'}>
                             Добавить в корзину
                         </Button>

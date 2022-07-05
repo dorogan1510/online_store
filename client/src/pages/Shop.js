@@ -27,7 +27,7 @@ const Shop = observer(() => {
             device.selectedType.id,
             device.selectedBrand.id,
             device.page,
-            2
+            5
         ).then(data => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
@@ -40,7 +40,7 @@ const Shop = observer(() => {
                 <Col md={3}>
                     <TypeBar />
                 </Col>
-                <Col md={9}>
+                <Col className='d-flex flex-column' md={9}>
                     <BrandBar />
                     <DeviceList />
                     <Pages />
