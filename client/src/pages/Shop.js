@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import Col from 'react-bootstrap/esm/Col'
 import Container from 'react-bootstrap/esm/Container'
+import Pages from '../components/Pages'
 import BrandBar from '../components/BrandBar'
 import TypeBar from './../components/TypeBar'
 import Row from 'react-bootstrap/Row'
@@ -15,8 +16,24 @@ const Shop = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => device.setTypes(data))
         fetchBrands().then(data => device.setBrands(data))
-        fetchDevices().then(data => device.setDevices(data.rows))
+        fetchDevices().then(data => {
+            device.setDevices(data.rows)
+            device.setTotalCount(data.count)
+        })
     }, [])
+
+    useEffect(() => {
+        fetchDevices(
+            device.selectedType.id,
+            device.selectedBrand.id,
+            device.page,
+            2
+        ).then(data => {
+            device.setDevices(data.rows)
+            device.setTotalCount(data.count)
+        })
+    }, [device.page, device.selectedType, device.selectedBrand])
+
     return (
         <Container>
             <Row className='mt-2'>
@@ -26,6 +43,7 @@ const Shop = observer(() => {
                 <Col md={9}>
                     <BrandBar />
                     <DeviceList />
+                    <Pages />
                 </Col>
             </Row>
         </Container>

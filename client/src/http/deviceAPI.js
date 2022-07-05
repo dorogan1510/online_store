@@ -16,7 +16,7 @@ export const createBrand = async brand => {
     return data
 }
 
-export const fetchBrands = async () => {
+export const fetchBrands = async (typeId, brandId, page, limit = 5) => {
     const { data } = await $host.get('api/brand')
     return data
 }
