@@ -3,18 +3,13 @@ import { makeAutoObservable } from 'mobx'
 export default class DeviceStore {
     constructor() {
         this._types = []
-        this._brands = [
-            { id: 1, name: 'Iphone' },
-            { id: 2, name: 'Samsung' },
-            { id: 3, name: 'Lenovo' },
-            { id: 4, name: 'Asus' },
-        ]
+        this._brands = []
         this._devices = []
         this._selectedType = {}
         this._selectedBrand = {}
         this._page = 1
         this._totalCount = 0
-        this._limit = 4
+        this._limit = 8
         makeAutoObservable(this)
     }
 
@@ -49,7 +44,6 @@ export default class DeviceStore {
     get types() {
         return this._types
     }
-
     get brands() {
         return this._brands
     }

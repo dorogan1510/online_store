@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React, { useContext } from 'react'
 import { Context } from '../index'
 import Card from 'react-bootstrap/Card'
-import Row from 'react-bootstrap/Row'
+import { Button } from 'react-bootstrap'
 
 const BrandBar = observer(() => {
     const { device } = useContext(Context)

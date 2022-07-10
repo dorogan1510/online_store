@@ -15,13 +15,22 @@ const DeviceItem = ({ device }) => {
             className={'mt-3'}
             onClick={() => navigate(DEVICE_ROUTE + '/' + device.id)}
         >
-            <Card style={{ width: 150, cursor: 'pointer' }} border={'light'}>
+            <Card
+                className='mr-2'
+                style={{ width: 150, cursor: 'pointer' }}
+                border={'light'}
+            >
                 <Image
                     width={150}
                     height={150}
                     src={'http://localhost:5000/' + device.img}
                 />
-                <div className='mt-2'>{device.name}</div>
+                <div className='mt-2' style={{ height: 45 }}>
+                    {device.name}
+                </div>
+                <div className='mt-2' style={{ fontSize: 24 }}>
+                    {device.price} руб.
+                </div>
             </Card>
         </Col>
     )
