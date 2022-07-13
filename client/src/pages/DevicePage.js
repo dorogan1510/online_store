@@ -20,24 +20,13 @@ const DevicePage = () => {
     }
     return (
         <Container className={'mt-3'}>
-            <Row className={'d-flex justify-content-around'}>
+            <Row className={'d-flex justify-content-center'}>
                 <Col md={4}>
                     <Image
                         width={300}
                         height={300}
                         src={'http://localhost:5000/' + device.img}
                     />
-                    <Card
-                        className='d-flex flex-column align-items-center justify-content-around'
-                        style={{
-                            width: 300,
-                            height: 300,
-                            fontSize: 32,
-                            border: 'white',
-                        }}
-                    >
-                        <h1>{device.name}</h1>
-                    </Card>
                 </Col>
                 {/* <Col md={4}>
                     <Row className='d-flex flex-column align-items-center '>
@@ -75,7 +64,7 @@ const DevicePage = () => {
                     </Card>
                 </Col>
             </Row>
-            <Row className='d-flex flex-column m-3'>
+            <Row className='d-flex flex-column m-3 justify-content-center'>
                 <h1>Характеристики</h1>
                 {device.info.map((info, index) => (
                     <Row

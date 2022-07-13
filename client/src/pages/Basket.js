@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { Context } from '..'
-import { getBasket } from '../http/deviceAPI'
+import { deleteBasket, getBasket } from '../http/deviceAPI'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { observer } from 'mobx-react-lite'
+import { useParams } from 'react-router-dom'
 
 const Basket = observer(() => {
     const { device } = useContext(Context)
-    const [deleteDevice, setDeleteDevice] = useState([])
 
     useEffect(() => {
         getBasket().then(data => device.setBaskets(data))
@@ -16,10 +16,6 @@ const Basket = observer(() => {
     let prices = 0
     {
         device.basket.map(price => (prices += Number(price.device.price)))
-    }
-
-    const removeBasketDevice = number => {
-        setDeleteDevice(deleteDevice.filter(i => i.number !== number))
     }
 
     return (

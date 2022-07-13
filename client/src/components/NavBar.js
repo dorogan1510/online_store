@@ -42,6 +42,13 @@ const NavBar = observer(() => {
                         >
                             Выйти
                         </Button>
+                        <Button
+                            className='mx-2 '
+                            variant={'outline-light'}
+                            onClick={() => navigate(BASKET_ROUTE)}
+                        >
+                            Корзина
+                        </Button>
                     </Nav>
                 ) : (
                     <Nav className='ml-auto' style={{ color: 'white' }}>
@@ -51,15 +58,15 @@ const NavBar = observer(() => {
                         >
                             Авторизация
                         </Button>
+                        <Button
+                            className='mx-2 '
+                            variant={'outline-light'}
+                            onClick={() => navigate(BASKET_ROUTE)}
+                        >
+                            Корзина
+                        </Button>
                     </Nav>
                 )}
-                <Button
-                    className='mx-2'
-                    variant={'outline-light'}
-                    onClick={() => navigate(BASKET_ROUTE)}
-                >
-                    Корзина
-                </Button>
             </Container>
         </Navbar>
     )
