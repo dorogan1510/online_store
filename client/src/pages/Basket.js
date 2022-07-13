@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import { Context } from '..'
-import { deleteBasket, getBasket } from '../http/deviceAPI'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
+import { getBasket } from '../http/deviceAPI'
+import { Card, Col, Container, Row } from 'react-bootstrap'
 import { observer } from 'mobx-react-lite'
-import { useParams } from 'react-router-dom'
 
 const Basket = observer(() => {
     const { device } = useContext(Context)
@@ -38,8 +37,9 @@ const Basket = observer(() => {
                         <Col>
                             <div className='d-flex flex-row align-items-center'>
                                 <img
+                                    alt=''
                                     src={
-                                        'http://localhost:5000/' +
+                                        process.env.REACT_APP_API_URL +
                                         product.device.img
                                     }
                                     width={50}

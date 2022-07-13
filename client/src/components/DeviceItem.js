@@ -2,7 +2,6 @@ import React from 'react'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
-import star from '../assets/star.png'
 import { useNavigate } from 'react-router-dom'
 import { DEVICE_ROUTE } from '../utils/consts'
 
@@ -23,7 +22,7 @@ const DeviceItem = ({ device }) => {
                 <Image
                     width={150}
                     height={150}
-                    src={'http://localhost:5000/' + device.img}
+                    src={process.env.REACT_APP_API_URL + `/` + device.img}
                 />
                 <div className='mt-2' style={{ height: 45 }}>
                     {device.name}

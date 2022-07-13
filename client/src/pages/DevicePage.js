@@ -18,6 +18,7 @@ const DevicePage = () => {
             alert(`Товар ` + device.name + ` был добавлен в вашу корзину!`)
         )
     }
+
     return (
         <Container className={'mt-3'}>
             <Row className={'d-flex justify-content-center'}>
@@ -25,7 +26,7 @@ const DevicePage = () => {
                     <Image
                         width={300}
                         height={300}
-                        src={'http://localhost:5000/' + device.img}
+                        src={process.env.REACT_APP_API_URL + `/` + device.img}
                     />
                 </Col>
                 {/* <Col md={4}>
