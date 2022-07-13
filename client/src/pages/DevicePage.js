@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap'
-import bigStar from '../assets/big_star.png'
 import { useParams } from 'react-router-dom'
-import { fetchOneDevice } from './../http/deviceAPI'
+import { fetchOneDevice, addToBasket } from './../http/deviceAPI'
 
 const DevicePage = () => {
     const [device, setDevice] = useState({ info: [] })
@@ -11,6 +10,14 @@ const DevicePage = () => {
     useEffect(() => {
         fetchOneDevice(id).then(data => setDevice(data))
     }, [])
+
+    const add = () => {
+        const formData = new FormData()
+        formData.append('deviceId', id)
+        addToBasket(formData).then(response =>
+            alert(`Товар ` + device.name + ` был добавлен в вашу корзину!`)
+        )
+    }
     return (
         <Container className={'mt-3'}>
             <Row className={'d-flex justify-content-around'}>
@@ -20,6 +27,17 @@ const DevicePage = () => {
                         height={300}
                         src={'http://localhost:5000/' + device.img}
                     />
+                    <Card
+                        className='d-flex flex-column align-items-center justify-content-around'
+                        style={{
+                            width: 300,
+                            height: 300,
+                            fontSize: 32,
+                            border: 'white',
+                        }}
+                    >
+                        <h1>{device.name}</h1>
+                    </Card>
                 </Col>
                 {/* <Col md={4}>
                     <Row className='d-flex flex-column align-items-center '>
@@ -50,7 +68,8 @@ const DevicePage = () => {
                         <h3 className='text-center'>{device.name}</h3>
 
                         <h4>{device.price} руб.</h4>
-                        <Button variant={'outline-dark'}>
+
+                        <Button variant={'outline-dark'} onClick={add}>
                             Добавить в корзину
                         </Button>
                     </Card>

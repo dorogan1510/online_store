@@ -25,8 +25,12 @@ const Auth = observer(() => {
             } else {
                 data = await registration(email, password)
             }
-            user.setUser(user)
+            user.setUser(data)
             user.setIsAuth(true)
+
+            if (email === 'admin@mail.ru') {
+                user.setIsAdmin(true)
+            }
             navigate(SHOP_ROUTE)
         } catch (e) {
             alert(e.response.data.message)
